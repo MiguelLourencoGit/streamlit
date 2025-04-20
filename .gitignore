@@ -1,0 +1,16 @@
+# Ignorar arquivos de credenciais
+secrets.toml
+
+# Ignorar diretórios e arquivos de cache
+__pycache__/
+*.pyc
+
+# Ignorar ambiente virtual
+venv/
+env/
+
+# Ignorar arquivos do Streamlit
+.streamlit/
+
+# Ignorar arquivos do Jupyter Notebook
+.ipynb_checkpoints/
