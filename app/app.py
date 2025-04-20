@@ -3,20 +3,24 @@ import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
 import altair as alt
-import os
-import json
 
-# Carregar as credenciais do arquivo secrets.toml
-creds_dict = json.loads(os.getenv("GOOGLE_SHEET_CREDS"))
+# Carregar as credenciais a partir do secrets.toml via Streamlit
+creds_dict = st.secrets["connections"]["gsheets"]
 
-# Usar as credenciais para autenticação
-creds = Credentials.from_service_account_info(creds_dict)
+# Definir os scopes certos
+scopes = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive"
+]
+
+# Usar as credenciais para autenticação COM os scopes
+creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
 
 # Autorizar o cliente gspread com as credenciais
 client = gspread.authorize(creds)
 
 # URL da planilha do Google Sheets
-sheet_url = 'https://docs.google.com/spreadsheets/d/1UE6pFA_wOaH-qGjG6fbYE2TV8xDpNE55XNcZzae84uE/edit?gid=0'
+sheet_url = creds_dict["spreadsheet"]
 
 # Aceder à planilha
 sheet = client.open_by_url(sheet_url)
