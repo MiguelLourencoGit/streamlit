@@ -1,4 +1,7 @@
-streamlit==1.44.1
+streamlit==1.18.0
 gspread==5.7.0
-google-auth==2.22.0
-pandas==2.0.1
+google-auth==2.16.0
+google-auth-oauthlib==0.7.1
+google-auth-httplib2==0.1.0
+pandas==1.5.3
+altair==4.2.0
